@@ -1,7 +1,7 @@
 import streamlit as st
-import numpy as np
 
 from PIL import Image
+from streamlit_tags import st_tags
 from utils import MyPredictor
 
 st.set_page_config(
@@ -15,12 +15,6 @@ st.markdown('## Auto Tagging for Fashion Retail Using Multi-label Image Classifi
 
 uploaded_file = st.file_uploader(label="Choose a file", type=['jpg', 'jpeg'])
 
-example_output = """
-- dress
-- black
-- sleeves
-"""
-
 predictor = MyPredictor()
 
 if uploaded_file is not None:
@@ -32,7 +26,5 @@ if uploaded_file is not None:
         st.image(image, caption="Fashion Image")
     with col2:
         st.markdown('<p style="text-align: center;">Image Tags</p><hr>', unsafe_allow_html=True)
-        st.markdown("**Tags from Image:**")
-        # st.markdown(example_output)
         tags = predictor.predict(image=image)
-        st.write(f"{tags}")
+        tags = st_tags(label="Tags:", text="Add more", value=tags)
