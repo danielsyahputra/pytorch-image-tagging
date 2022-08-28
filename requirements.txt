@@ -1,4 +1,5 @@
 streamlit
+streamlit_tags
 torch
 torchvision
 scikit-learn==1.0.2
