@@ -1,4 +1,4 @@
-# Auto Tagging for Fashion Retail Using Multi-label Classification
+# Auto Tagging for Fashion Retail Using Multi-label Image Classification
 
 [![Source Code](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/133hKQ2tNsBmBy3luvEB3IwzVMV66B0kx?usp=sharing)
 [![Docker Image](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/repository/docker/danielsyahputra13/pytorch_image_tagging)
