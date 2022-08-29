@@ -55,7 +55,7 @@ class MyPredictor():
         model.load_state_dict(torch.load(f="./model/parameters.pth", map_location=torch.device('cpu')))
         self.model = model
 
-    def predict(self, image):
+    def predict(self, image, num_of_tags=5):
         image_transformed = self.transform(image)
         batch_image = torch.unsqueeze(image_transformed, 0)
         self.model.eval()
@@ -63,8 +63,8 @@ class MyPredictor():
         # Inference
         output = self.model(batch_image).detach().numpy()
         preds = output[0]
-        top5 =  np.sort(preds)[::-1][min(4, len(preds)-1)]
-        preds[preds < top5] = 0
-        preds[preds >= top5] = 1
+        top_n_tags =  np.sort(preds)[::-1][min(num_of_tags - 1, len(preds)-1)]
+        preds[preds < top_n_tags] = 0
+        preds[preds >= top_n_tags] = 1
         tags = self.binarizer.inverse_transform(np.array([preds]))[0][:]
         return tags

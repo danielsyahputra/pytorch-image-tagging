@@ -16,6 +16,7 @@ def load_settings():
     st.markdown('## Auto Tagging for Fashion Retail Using Multi-label Image Classification')
     
     # Sidebar
+    global sidebar
     sidebar = st.sidebar
 
     with open("assets/test.jpg", "rb") as file:
@@ -35,13 +36,15 @@ def main():
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
 
+        num_of_tags = sidebar.radio("Number of Tags", (3, 4, 5), index=2)
+
         col1, col2 = st.columns(2)
         with col1:
             st.markdown('<p style="text-align: center;">Your Image</p><hr>', unsafe_allow_html=True)
             st.image(image, caption="Fashion Image")
         with col2:
             st.markdown('<p style="text-align: center;">Image Tags</p><hr>', unsafe_allow_html=True)
-            tags = predictor.predict(image=image)
+            tags = predictor.predict(image=image, num_of_tags=num_of_tags)
             tags = st_tags(label="Tags:", text="Add more", value=tags)
 
 if __name__=="__main__":
