@@ -7,8 +7,8 @@
 
 ### Via Cloning This Repo
 
-- Clone this repo: `https://github.com/danielsyahputra/pytorch-fashion-classification.git`
-- Change the working directory: `cd pytorch-fashion-classification`
+- Clone this repo: `https://github.com/danielsyahputra/pytorch-image-tagging.git`
+- Change the working directory: `cd pytorch-image-tagging`
 - Install dependencies: `pip install -r requirements.txt`
 - Run thi command: `streamlit run App.py`
 
